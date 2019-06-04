@@ -30,6 +30,8 @@ class App extends Component {
     ],
     showCard: true, 
     showForm: false,
+    editCard: false, 
+    currentCard: 0, 
   }
 
   toggleForm = () => this.setState( {showForm: !this.state.showForm} )
@@ -53,6 +55,26 @@ class App extends Component {
     
     this.setState({cards, });
   }; 
+
+  // EDIT 
+  editCards = (cardData) => {
+    const cards = this.state.map(card => {
+      if (card.id === cardData.id)
+      return cardData; 
+      return card; 
+    }); 
+    this.setState({cards: cards}); 
+  } 
+
+   // TOGGLE EDIT MENU 
+  //  toggleEdit = () => {
+  //   let {cards, currentCard } = this.state
+  //   this.setState({
+  //     editCard: !this.state.editCard, 
+  //     front: cards[currentCard].front,
+  //     back: cards[currentCard].back, 
+  //   })
+  // }; 
 
   render() {
     return (
